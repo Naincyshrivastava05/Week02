@@ -1,33 +1,49 @@
+// Define the Book class
 public class Book {
-    // Private member variables to store book details
-    private String title;
-    private String author;
-    private int price;
+    // Instance variables for book title and author
+    private String title, author;
 
-    // Constructor to initialize the book details
-    public Book(String title, String author, int price) {
-        this.title = title;
-        this.author = author;
-        this.price = price;
+    // Final instance variable for ISBN (unique identifier for the book)
+    private final int isbn;
+
+    // Static variable for the library name, common to all instances
+    static String libraryName = "BookBank Library";
+
+    // Static method to display the library name
+    public static void displayLibraryName() {
+        System.out.println("Name of library is " + libraryName);
     }
 
-    // Method to display the details of the book
+    // Constructor to initialize the book's title, author, and ISBN
+    public Book(String title, String author, int isbn) {
+        this.title = title; // Set the title
+        this.author = author; // Set the author
+        this.isbn = isbn; // Set the ISBN
+    }
+
+    // Method to display book details
     public void display() {
-        // Print the title of the book
-        System.out.println("The title of the Book is " + title);
-        // Print the author of the book
-        System.out.println("The author of the Book is " + author);
-        // Print the price of the book
-        System.out.println("The price of the Book is " + price);
+        System.out.println("Library: " + libraryName); // Display library name
+        System.out.println("Title: " + title); // Display book title
+        System.out.println("Author: " + author); // Display book author
+        System.out.println("ISBN: " + isbn); // Display book ISBN
     }
-}
 
-public class Main {
+    // Main method, entry point of the program
     public static void main(String[] args) {
-        // Create a Book object with title, author, and price
-        Book book = new Book("Think like a monk", "Jay Shetty", 200);
-        
-        // Display the details of the book
+        // Create a new Book object
+        Book book = new Book("Think like a monk", "Jay Shetty", 1234);
+
+        // Check if the object 'book' is an instance of the Book class
+        if (book instanceof Book)
+            System.out.println("Yes, it is an instance of that class.");
+        else
+            System.out.println("No");
+
+        // Call the static method to display the library name
+        book.displayLibraryName();
+
+        // Call the instance method to display book details
         book.display();
     }
 }

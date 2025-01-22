@@ -1,32 +1,73 @@
-// Class representing an Employee
 public class Employee {
-    // Private fields for the Employee class
-    private String name;   // Stores the name of the employee
-    private int id;        // Stores the unique ID of the employee
-    private double salary; // Stores the salary of the employee
+  // Static variables
+  private static int numberOfEmployee = 0; // Tracks total number of employees
+  private static String companyName = "Capgemini"; // Common company name
 
-    // Constructor to initialize the Employee object
-    public Employee(String name, int id, double salary) {
-        this.name = name;   // Initialize the name field
-        this.id = id;       // Initialize the id field
-        this.salary = salary; // Initialize the salary field
-    }
+  // Instance variables
+  private String name; // Name of the employee
+  private final String id; // Unique, immutable employee ID
+  private String designation; // Employee's job role
 
-    // Method to display the details of the employee
-    public void display() {
-        System.out.println("The name of the employee is " + name); // Print the employee's name
-        System.out.println("The id of the employee is " + id);     // Print the employee's ID
-        System.out.println("The salary of the employee is " + salary); // Print the employee's salary
-    }
-}
+  // Constructor
+  public Employee(String name, String id, String designation) {
+      this.name = name;
+      this.id = id;
+      this.designation = designation;
+      numberOfEmployee++; // Increment the employee count
+  }
 
-// Main class to test the Employee class
-public class Main {
-    public static void main(String[] args) {
-        // Create an Employee object with name, ID, and salary
-        Employee employee = new Employee("Naincy Shrivastava", 12345, 30000);
-        
-        // Call the display method to print employee details
-        employee.display();
-    }
+  // Static method to display the total number of employees
+  public static void displayTotalEmployees() {
+      System.out.println("The total number of employees: " + numberOfEmployee);
+  }
+
+  // Getter and Setter for name
+  public String getName() {
+      return name;
+  }
+
+  public void setName(String name) {
+      this.name = name;
+  }
+
+  // Getter for ID (no setter as it's final)
+  public String getId() {
+      return id;
+  }
+
+  // Getter and Setter for designation
+  public String getDesignation() {
+      return designation;
+  }
+
+  public void setDesignation(String designation) {
+      this.designation = designation;
+  }
+
+  // Method to display employee details
+  public void display() {
+      System.out.println("Company Name: " + companyName);
+      System.out.println("Employee Name: " + name);
+      System.out.println("Employee ID: " + id);
+      System.out.println("Employee Designation: " + designation);
+  }
+
+  // Main method
+  public static void main(String[] args) {
+      // Create an Employee object
+      Employee employee = new Employee("Naincy", "0199CS211100", "Java Developer");
+
+      // Check if the object is an instance of the Employee class
+      if (employee instanceof Employee) {
+          System.out.println("Employee class object");
+      } else {
+          System.out.println("Not an Employee class object");
+      }
+
+      // Display employee details
+      employee.display();
+
+      // Display total number of employees
+      Employee.displayTotalEmployees();
+  }
 }
